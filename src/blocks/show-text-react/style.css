@@ -2,3 +2,7 @@
 	padding: 40px;
 	background-color: #86b1f7;
 }
+
+.red-text p {
+	background-color: red !important;
+}

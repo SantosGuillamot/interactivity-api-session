@@ -12,8 +12,10 @@
  * Text Domain:       interactivity-api-session
  */
 
+//  require_once __DIR__ . '/add-class-hook.php';
 
-// We need these filters to ensure the view.js files can access the window.__experimentalInteractivity
+
+ // We need these filters to ensure the view.js files can access the window.__experimentalInteractivity
 // Once the bundling is solved and we stop using
 // window.__experimentalInteractivity we can remove them.
 // enqueue_interactive_blocks_scripts( 'movie-like-icon' );
