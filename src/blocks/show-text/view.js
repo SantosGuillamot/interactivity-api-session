@@ -12,7 +12,7 @@ store({
 	effects: {
 		sessionPlugin: {
 			logShow: ({ context }) => {
-				console.log(context.hidden);
+				console.log('Hidden: ' + context.hidden);
 			},
 		},
 	},

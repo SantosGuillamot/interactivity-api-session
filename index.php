@@ -12,7 +12,7 @@
  * Text Domain:       interactivity-api-session
  */
 
-//  require_once __DIR__ . '/hooks/add-class-hook.php';
+// require_once __DIR__ . '/hooks/add-class-hook.php';
 require_once __DIR__ . '/hooks/add-zoom-hook.php';
 
 
