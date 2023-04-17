@@ -3,10 +3,10 @@
 function add_zoom_to_images($block_content, $block)
 {
     $w = new WP_HTML_Tag_Processor($block_content);
-    while ($w->next_tag('figure')) {
+    if ($w->next_tag('figure')) {
         $w->set_attribute('data-wp-context', '{ "isZooming": false }');
         $w->add_class('zoom-image-wrapper');
-        while ($w->next_tag('img')) {
+        if ($w->next_tag('img')) {
             $w->set_attribute('data-wp-on.mousemove', 'actions.sessionPlugin.zoom');
             $w->set_attribute('data-wp-on.mouseout', 'actions.sessionPlugin.resetZoom');
         }
