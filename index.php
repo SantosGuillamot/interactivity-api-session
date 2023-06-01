@@ -95,17 +95,3 @@ function session_auto_inject_interactivity_dependency()
 	}
 }
 
-// Enqueue React
-add_action('wp_enqueue_scripts', 'enqueue_react_js'); // Loads on frontend
-
-function enqueue_react_js()
-{
-
-	wp_enqueue_script(
-		'react-frontend',
-		plugin_dir_url(__FILE__) . 'build/blocks/show-text-react/view.js',
-		['wp-element'],
-		null, // Change this to null for production
-		true
-	);
-}

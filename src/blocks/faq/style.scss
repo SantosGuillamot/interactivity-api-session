@@ -1,0 +1,21 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-session-faq .faq-question {
+	background-color: #d2d2d2;
+	color: #000;
+	padding: 10px;
+	margin: 0;
+}
+
+.wp-block-session-faq .faq-answer {
+	background-color: transparent;
+	color: #000;
+	padding: 10px;
+	margin: 0;
+	border: 1px solid #d2d2d2;
+}

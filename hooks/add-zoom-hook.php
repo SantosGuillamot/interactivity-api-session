@@ -7,8 +7,8 @@ function add_zoom_to_images($block_content, $block)
         $w->set_attribute('data-wp-context', '{ "isZooming": false }');
         $w->add_class('zoom-image-wrapper');
         if ($w->next_tag('img')) {
-            $w->set_attribute('data-wp-on.mousemove', 'actions.sessionPlugin.zoom');
-            $w->set_attribute('data-wp-on.mouseout', 'actions.sessionPlugin.resetZoom');
+            $w->set_attribute('data-wp-on--mousemove', 'actions.sessionPlugin.zoom');
+            $w->set_attribute('data-wp-on--mouseout', 'actions.sessionPlugin.resetZoom');
         }
     }
 

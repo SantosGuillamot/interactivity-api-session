@@ -4,11 +4,11 @@
 >
     <button
         data-wp-effect="effects.sessionPlugin.logShow"
-        data-wp-on.click="actions.sessionPlugin.toggle"
+        data-wp-on--click="actions.sessionPlugin.toggle"
     >
         Toggle
     </button>
-    <div class="hidden-text" data-wp-bind.hidden="context.hidden">
+    <div class="hidden-text" data-wp-bind--hidden="context.hidden">
         <p>Some text!</p>
     </div>
 </div>
