@@ -15,34 +15,6 @@
 // require_once __DIR__ . '/hooks/add-class-hook.php';
 require_once __DIR__ . '/hooks/add-zoom-hook.php';
 
-
-// We need these filters to ensure the view.js files can access the window.__experimentalInteractivity
-// Once the bundling is solved and we stop using
-// window.__experimentalInteractivity we can remove them.
-// enqueue_interactive_blocks_scripts( 'movie-like-icon' );
-
-/**
- * A helper function that enqueues scripts for the interactive blocks.
- *
- * @param string $block - The block name.
- * @return void
- */
-function session_enqueue_interactive_blocks_scripts($block)
-{
-	$interactive_block_filter = function ($content) use ($block) {
-		wp_register_script(
-			'session/' . $block,
-			plugin_dir_url(__FILE__) . 'build/blocks/' . $block . '/view.js',
-			array('wp-directive-runtime'),
-			'1.0.0',
-			true
-		);
-		wp_enqueue_script('session/' . $block);
-		return $content;
-	};
-	add_filter('render_block_session/' . $block, $interactive_block_filter);
-}
-
 function session_auto_register_block_types()
 {
 	// Register all the blocks in the plugin
@@ -59,39 +31,4 @@ function session_auto_register_block_types()
 
 add_action('init', 'session_auto_register_block_types');
 
-function session_add_script_dependency($handle, $dep)
-{
-	global $wp_scripts;
-
-	$script = $wp_scripts->query($handle, 'registered');
-	if (!$script)
-		return false;
-
-	if (!in_array($dep, $script->deps, true)) {
-		$script->deps[] = $dep;
-
-		// move script to the footer if it's not already there
-		$wp_scripts->add_data($handle, 'group', 1);
-	}
-
-	return true;
-}
-
-add_action('wp_enqueue_scripts', 'session_auto_inject_interactivity_dependency');
-
-function session_auto_inject_interactivity_dependency()
-{
-	$registered_blocks = \WP_Block_Type_Registry::get_instance()->get_all_registered();
-
-	foreach ($registered_blocks as $name => $block) {
-		$has_interactivity_support = $block->supports['interactivity'] ?? false;
-
-		if (!$has_interactivity_support) {
-			continue;
-		}
-		foreach ($block->view_script_handles as $handle) {
-			session_add_script_dependency($handle, 'wp-directive-runtime');
-		}
-	}
-}
 

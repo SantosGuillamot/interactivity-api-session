@@ -1,5 +1,6 @@
 <div
-    <?php echo get_block_wrapper_attributes(); ?> 
+    <?php echo get_block_wrapper_attributes(); ?>
+    data-wp-interactive
     data-wp-context='{ "hidden": true }'
 >
     <button
